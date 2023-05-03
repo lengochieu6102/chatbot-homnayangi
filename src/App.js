@@ -15,13 +15,14 @@ const App = () => {
   };
   const getMessages = async()=> {
     setDisabled(true)
-    setPreviousChats(prevChats => (
-        [...prevChats,
+    previousChats.push(
           {
             role: "user",
             content: value
-          }]
-    ))
+          }
+    )
+    console.log(previousChats)
+
     setValue("")
     const options = {
       method: 'POST',

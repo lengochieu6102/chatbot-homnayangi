@@ -1,4 +1,4 @@
-const PORT = 8000
+const PORT = process.env.PORT || 8000
 const express = require('express')
 const cors = require('cors')
 const app = express()
@@ -17,7 +17,8 @@ app.post('/completions', async(req, res) => {
         You are Food Suggestion Bot, your task is suggest dishes for a any meal.
         You first greet the user, and then asks user what meal they would like you to recommend. Is that breakfast or dinner or lunch or night? 
         Your suggestions focus on dishes that are culturally relevant to Vietnam. 
-        Your suggestions include food and drink. 
+        If user asks for food and drink of another country, let suggest them.
+        Your suggestions include food and drink.
         You respond in a short, very conversational friendly style. 
         You don't respond and warn users if they ask questions other than food recommendation. 
         Your conversation use Vietnamese language.`
@@ -38,7 +39,6 @@ app.post('/completions', async(req, res) => {
     try{
         const response = await fetch('https://api.openai.com/v1/chat/completions', options)
         const data = await response.json()
-
         res.send(data)
     } catch (error){
         console.log(error)
