@@ -85,6 +85,7 @@ const App = () => {
     setDisabled(false)
   }, [message])
   useEffectOnce(() => {
+    document.title = 'Hum nay ăn gì';
     getGreeting()
   }, [])
 
