@@ -21,7 +21,6 @@ const App = () => {
             content: value
           }
     )
-    console.log(previousChats)
 
     setValue("")
     const options = {
@@ -34,10 +33,9 @@ const App = () => {
       })
     }
     try {
-      const response =  await fetch('http://localhost:8000/completions', options)
+      const response =  await fetch('https://foos-suggestion-chatbot.onrender.com/completions', options)
       const data = await response.json()
       setMessage(data.choices[0].message)
-
 
     } catch (error){
       console.log(error)
@@ -65,7 +63,7 @@ const App = () => {
           }]
     ))
     try {
-      const response =  await fetch('http://localhost:8000/completions', options)
+      const response =  await fetch('https://foos-suggestion-chatbot.onrender.com/completions', options)
       const data = await response.json()
       setMessage(data.choices[0].message)
     } catch (error){
